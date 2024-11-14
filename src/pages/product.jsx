@@ -5,7 +5,7 @@ import img3 from '../asserts/img7.webp';
 import img4 from '../asserts/img4.webp';
 import img5 from '../asserts/img5.webp';
 import { useCart } from '../context/cartContext';
-import {FaShoppingCart,FaBolt,FaHeart} from 'react-icons/fa';
+import {FaShoppingCart} from 'react-icons/fa';
 const Product = () => {
   const [selectedItem, setSelectedItem] = useState(null)
 
