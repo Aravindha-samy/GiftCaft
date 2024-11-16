@@ -67,7 +67,7 @@ const Login = () => {
                         </div>
 
                         <div className="text-sm">
-                            <a href="#" className="font-medium text-indigo-600 hover:text-indigo-500">
+                            <a href="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
                                 Forgot your password?
                             </a>
                         </div>
@@ -98,7 +98,7 @@ const Login = () => {
                         <div className="grid grid-cols-2 gap-3 mt-6">
                             <div>
                                 <a
-                                    href="#"
+                                    href="/login"
                                     className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50"
                                 >
                                     <FaGoogle className="w-5 h-5 text-red-500" />
@@ -107,7 +107,7 @@ const Login = () => {
                             </div>
                             <div>
                                 <a
-                                    href="#"
+                                    href="/login"
                                     className="flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50"
                                 >
                                     <FaMicrosoft className="w-5 h-5 text-blue-500" />
