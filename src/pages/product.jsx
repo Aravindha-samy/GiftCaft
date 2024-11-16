@@ -5,7 +5,7 @@ import img3 from '../asserts/img7.webp';
 import img4 from '../asserts/img4.webp';
 import img5 from '../asserts/img5.webp';
 import { useCart } from '../context/cartContext';
-import {FaShoppingCart,FaBolt,FaHeart} from 'react-icons/fa';
+import {FaShoppingCart} from 'react-icons/fa';
 const Product = () => {
   const [selectedItem, setSelectedItem] = useState(null)
 
@@ -81,21 +81,21 @@ const Product = () => {
   
 
   return (
-    <div className="container mx-auto px-4 py-8 bg-gray-100">    
-      <h1 className="text-4xl font-bold text-center mb-8 text-indigo-700">Our Exquisite Collection</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="container px-4 py-8 mx-auto bg-gray-100">    
+      <h1 className="mb-8 text-4xl font-bold text-center text-indigo-700">Our Exquisite Collection</h1>
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         {arr.map((item, index) => (
-          <div key={index} className="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+          <div key={index} className="overflow-hidden transition duration-300 transform bg-white rounded-lg shadow-lg hover:scale-105">
             <div className="relative">
-              <img src={item.img} alt={item.title} className="w-full h-60 object-cover" />
-              <div className="absolute top-0 right-0 bg-indigo-600 text-white px-2 py-1 m-2 rounded-full text-sm font-semibold">
+              <img src={item.img} alt={item.title} className="object-cover w-full h-60" />
+              <div className="absolute top-0 right-0 px-2 py-1 m-2 text-sm font-semibold text-white bg-indigo-600 rounded-full">
                 ${item.price.toFixed(2)}
               </div>
             </div>
             <div className="p-6">
-              <h2 className="text-2xl font-semibold mb-2 text-indigo-800">{item.title}</h2>
-              <p className="text-gray-600 mb-4">{item.description}</p>
-              <div className="flex justify-between items-center mb-4">
+              <h2 className="mb-2 text-2xl font-semibold text-indigo-800">{item.title}</h2>
+              <p className="mb-4 text-gray-600">{item.description}</p>
+              <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center">
                   {[...Array(5)].map((_, i) => (
                     <svg
@@ -115,7 +115,7 @@ const Product = () => {
                 <span className="text-sm text-gray-500">{item.comments.length} reviews</span>
               </div>           
               <button 
-                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-4 rounded-full transition duration-300 flex items-center justify-center"
+                className="flex items-center justify-center w-full px-4 py-3 font-bold text-white transition duration-300 bg-indigo-600 rounded-full hover:bg-indigo-700"
                 onClick={() => setSelectedItem(item)}
               >
                 <FaShoppingCart className="mr-2" /> Quick Shop
@@ -257,20 +257,20 @@ const Modal = ({ item, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50 ">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black bg-opacity-50 ">
       <div className="bg-white rounded-lg p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto">
         <div className="flex flex-col md:flex-row ">
-          <div className="w-full md:w-1/2 mb-4 md:mb-0 md:mr-4">
-            <img src={currentItem.img} alt={currentItem.title} className="w-full h-64 object-cover mb-4 rounded" />
-            <ul className="list-none p-0 ">
+          <div className="w-full mb-4 md:w-1/2 md:mb-0 md:mr-4">
+            <img src={currentItem.img} alt={currentItem.title} className="object-cover w-full h-64 mb-4 rounded" />
+            <ul className="p-0 list-none ">
               {arr.map((image, index) => (               
                 <li 
                   key={index}
-                  className='cursor-pointer hover:bg-gray-100 p-2 rounded flex items-center mr-2 mb-2'
-                  // className='cursor-pointer hover:bg-gray-100 p-2 rounded'
+                  className='flex items-center p-2 mb-2 mr-2 rounded cursor-pointer hover:bg-gray-100'
+                  // className='p-2 rounded cursor-pointer hover:bg-gray-100'
                   onClick={() => setCurrentItem(image)}
                 >
-                  <img src={image.img} alt={image.title} className="w-16 h-16 object-cover rounded mr-8" />
+                  <img src={image.img} alt={image.title} className="object-cover w-16 h-16 mr-8 rounded" />
                   <span className="text-sm">{image.title}</span>
                 </li>
               ))}
@@ -278,9 +278,9 @@ const Modal = ({ item, onClose }) => {
           </div>
           <div className="flex-1">
 
-            <h2 className="text-2xl font-bold mb-2">{currentItem.title}</h2>
-            <p className="text-gray-600 mb-4">{currentItem.description}</p>
-            <p className="text-xl font-bold text-green-600 mb-4">${currentItem.price.toFixed(2)}</p>
+            <h2 className="mb-2 text-2xl font-bold">{currentItem.title}</h2>
+            <p className="mb-4 text-gray-600">{currentItem.description}</p>
+            <p className="mb-4 text-xl font-bold text-green-600">${currentItem.price.toFixed(2)}</p>
              <div className="flex items-center mb-4">
               {[...Array(5)].map((_, i) => (
                 <svg
@@ -299,7 +299,7 @@ const Modal = ({ item, onClose }) => {
             </div>
             
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="quantity">
+              <label className="block mb-2 text-sm font-bold text-gray-700" htmlFor="quantity">
                 Quantity:
               </label>
               <input 
@@ -307,18 +307,18 @@ const Modal = ({ item, onClose }) => {
                 id="quantity"
                 value={quantity}
                 onChange={(e) => setQuantity(Math.max(1, parseInt(e.target.value)))}
-                className="shadow appearance-none border rounded w-20 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="w-20 px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               />
             </div>
             
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block mb-2 text-sm font-bold text-gray-700">
                 Color:
               </label>
               <select 
                 value={selectedColor}
                 onChange={(e) => setSelectedColor(e.target.value)}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               >
                 <option value="">Select a color</option>
                 {colours.map((color, index) => (
@@ -328,13 +328,13 @@ const Modal = ({ item, onClose }) => {
             </div>
             
             <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2">
+              <label className="block mb-2 text-sm font-bold text-gray-700">
                 Style:
               </label>
               <select 
                 value={selectedStyle}
                 onChange={(e) => setSelectedStyle(e.target.value)}
-                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                className="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               >
                 <option value="">Select a style</option>
                 {styles.map((style, index) => (
@@ -345,34 +345,34 @@ const Modal = ({ item, onClose }) => {
             
             <div className="flex flex-wrap gap-2 mb-4">
               <button 
-                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-600"
                 onClick={onClose}
               >
                 Close
               </button>
               <button 
-                className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+                className="px-4 py-2 font-bold text-white bg-green-500 rounded hover:bg-green-600"
                 onClick={handleAddToCart}
               >
                 Add to Cart
               </button>
-              <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+              <button className="px-4 py-2 font-bold text-white bg-yellow-500 rounded hover:bg-yellow-600">
                 Buy It Now
               </button>
             </div>
 
             {/* Comments section */}
             <div className="mt-6">
-              <h3 className="text-xl font-bold mb-4">Comments</h3>
+              <h3 className="mb-4 text-xl font-bold">Comments</h3>
               {currentItem.comments && currentItem.comments.length > 0 ? (
                 currentItem.comments.map((comment) => (
-                  <div key={comment.id} className="mb-4 border-b pb-2">
+                  <div key={comment.id} className="pb-2 mb-4 border-b">
                     <div className="flex items-center mb-2">
                       <div className={`w-10 h-10 rounded-full ${getAvatarColor(comment.name)} flex items-center justify-center text-white font-bold mr-3`}>
                         {getInitials(comment.name)}
                       </div>
                       <div>
-                        <span className="font-semibold mr-2">{comment.name}</span>
+                        <span className="mr-2 font-semibold">{comment.name}</span>
                         <div className="flex">
                           {[...Array(5)].map((_, i) => (
                             <svg
